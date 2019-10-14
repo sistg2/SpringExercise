@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sist.databoard.dao.databoard-mapper" >
+	<resultMap type="com.sist.databoard.dao.DataBoardVO" id="dbMap">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="pwd" column="pwd" />
+		<result property="regdate" column="regdate" />
+		<result property="hit" column="hit" />
+		<result property="filename" column="filename" />
+		<result property="filesize" column="filesize" />
+		<result property="filecount" column="filecount" />
+		<result property="rcount" column="rcount" />
+	</resultMap>
+	<parameterMap type="hashmap" id="dbListMap" >
+		<parameter property="pStart" mode="IN" javaType="java.lang.Integer" />
+		<parameter property="pEnd" mode="IN" javaType="java.lang.Integer" />
+		<parameter property="pResult" mode="OUT" jdbcType="CURSOR" resultMap="dbMap" />
+	</parameterMap>
+	<select id="databoardListData" parameterMap="dbListMap" statementType="CALLABLE" >
+		{CALL databoardListData(?, ?, ?)}
+	</select>
+	
+	<parameterMap type="hashmap" id="dbInsertMap">
+		<parameter property="pName" mode="IN" javaType="java.lang.String" />
+		<parameter property="pSubject" mode="IN" javaType="java.lang.String" />
+		<parameter property="pContent" mode="IN" javaType="java.lang.String" />
+		<parameter property="pPwd" mode="IN" javaType="java.lang.String" />
+		<parameter property="pFilename" mode="IN" javaType="java.lang.String" />
+		<parameter property="pFilesize" mode="IN" javaType="java.lang.String" />
+		<parameter property="pFilecount" mode="IN" javaType="java.lang.Integer" />
+	</parameterMap>
+	<select id="databoardInsert" parameterMap="dbInsertMap" statementType="CALLABLE" >
+		{CALL databoardInsert(?, ?, ?, ?, ?, ?, ?)}
+	</select>
+	
+	<parameterMap type="hashmap" id="dbDetailMap">
+		<parameter property="pNo" mode="IN" javaType="java.lang.Integer" />
+		<parameter property="pResult" mode="OUT" jdbcType="CURSOR" resultMap="dbMap" />
+	</parameterMap>
+	<select id="databoardDetailData" parameterMap="dbDetailMap" statementType="CALLABLE">
+		{CALL databoardDetailData(?, ?)}
+	</select>
+	
+	<parameterMap type="hashmap" id="dbTotalMap">
+		<parameter property="pTotal" mode="OUT" jdbcType="INTEGER" />
+	</parameterMap>
+	<select id="databoardTotalPage" parameterMap="dbTotalMap" statementType="CALLABLE" >
+		{CALL databoardTotalPage(?)}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

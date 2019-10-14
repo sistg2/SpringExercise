@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd" >
+<tiles-definitions>
+<!-- 
+	main 폼
+	@RequestMaping("main/main.do")
+	public String main_main() {
+		===
+		===
+		return "main";
+	}
+	
+	return "board/list";
+	name="*/*"
+	name="*/*/*"
+ -->
+	<definition name="main" template="/WEB-INF/main/main.jsp" >
+		<put-attribute name="nav" value="/WEB-INF/main/nav.jsp" />
+		<put-attribute name="topbar" value="/WEB-INF/main/topbar.jsp" />
+		<put-attribute name="top_content" value="/WEB-INF/main/top_content.jsp" />
+		<put-attribute name="body" value="/WEB-INF/main/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp" />
+	</definition>
+	<definition name="*/*" extends="main" >
+		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*" extends="main" >
+		<put-attribute name="body" value="/WEB-INF/{1}/{2}/{3}.jsp" />
+	</definition>
+</tiles-definitions>
+
+
+

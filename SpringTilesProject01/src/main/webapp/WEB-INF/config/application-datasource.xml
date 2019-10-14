@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-2.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<context:property-placeholder location="/WEB-INF/config/db.properties" />
+	<!-- 
+		properties를 읽는 방법은 두 가지이다 ==> context:property-placeholder, util:properties 
+		BasicDataSource를 선언하는 부분에서 코딩하기 편한 쪽은 context쪽이다.
+	-->
+	
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="${driver}"
+		p:url="${url}"
+		p:username="${user}"
+		p:password="${password}"
+	/>
+	
+	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="ds"
+		p:configLocation="/WEB-INF/config/Config.xml"
+	/>
+	
+	<bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.movie.dao.MovieMapper"
+	/>
+	
+	<mongo:mongo-client
+		id="mc"
+		host="127.0.0.1"
+		port="27017"
+	/>
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" >
+		<constructor-arg ref="mc" />
+		<constructor-arg name="databaseName" value="mydb" />
+	</bean>
+	
+</beans>
