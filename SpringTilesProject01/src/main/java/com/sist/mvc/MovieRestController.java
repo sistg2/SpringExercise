@@ -36,7 +36,7 @@ public class MovieRestController {
 			arr.add(obj);
 		}
 		result = arr.toJSONString();
-		
+		//System.out.println("chart_data : " + result);
 		return result;
 	}
 	
@@ -62,7 +62,7 @@ public class MovieRestController {
 		obj.put("director", vo.getDirector());
 			
 		result = obj.toJSONString();
-		
+		System.out.println("chart_detail : " + result);
 		return result;
 	}
 	

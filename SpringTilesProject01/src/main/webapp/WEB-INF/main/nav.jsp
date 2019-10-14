@@ -81,7 +81,7 @@
 	
 	<!-- Heading -->
 	<div class="sidebar-heading">
-		고객센터
+		기타
 	</div>
 	
 	<!-- Nav Item - Pages Collapse Menu -->
@@ -92,7 +92,7 @@
 		</a>
 		<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="login.html">자유게시판</a>
+				<a class="collapse-item" href="#">자유게시판</a>
 				<a class="collapse-item" href="../databoard/databoard_list.do">자료실</a>
 				<a class="collapse-item" href="../chat/react_chat.do">실시간 채팅</a>
 			</div>
@@ -101,15 +101,15 @@
 	
 	<!-- Nav Item - Charts -->
 	<li class="nav-item">
-		<a class="nav-link" href="../chart/recommand.do">
+		<a class="nav-link" href="#">
 			<i class="fas fa-fw fa-chart-area"></i>
-			<span>영화 추천 통계 정보</span>
+			<span>영화 추천</span>
 		</a>
 	</li>
 	
 	<!-- Nav Item - Tables -->
 	<li class="nav-item">
-		<a class="nav-link" href="tables.html">
+		<a class="nav-link" href="#">
 			<i class="fas fa-fw fa-table"></i>
 			<span>개봉 영화 예측</span>
 		</a>

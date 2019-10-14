@@ -12,14 +12,15 @@ import org.springframework.stereotype.Component;
 
 import com.sist.movie.dao.*;
 
-@Component
+//@Component
 public class RecommandManager {
-	/*public static void main(String[] args) {
+	/*
+	public static void main(String[] args) {
 		NaverBlogManager nbm = new NaverBlogManager();
 		nbm.recommandNamverData("가을");
 		RecommandManager rm = new RecommandManager();
 		rm.getData();
-	}*/
+	}
 	@Autowired
 	NaverBlogManager mgr;
 	
@@ -28,14 +29,14 @@ public class RecommandManager {
 	
 	public void getData() {
 		try {
-			/*JAXBContext jc = JAXBContext.newInstance(Rss.class);
+			JAXBContext jc = JAXBContext.newInstance(Rss.class);
 			Unmarshaller un = jc.createUnmarshaller();
 			Rss rss = (Rss)un.unmarshal(new File("c:\\naver_data\\movie.xml"));
 			List<Item> list = rss.getChannel().getItem();
 			StringBuffer sb = new StringBuffer();
 			for(Item i : list) {
 				sb.append(i.getDescription() + "\n");
-			}*/
+			}
 			StringBuffer s = new StringBuffer();
 			int i = 0;
 			FileReader fr = new FileReader("c:\\naver_data\\movie.json");
@@ -71,4 +72,5 @@ public class RecommandManager {
 		
 		return list;
 	}
+	*/
 }
